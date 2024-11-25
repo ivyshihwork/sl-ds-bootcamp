@@ -61,6 +61,7 @@ def viewExpenses():
     if not expenses:
         print("\nThere is no expense recorded so far.\n")
     else:
+        print("Note: If there's any entry with empty value, the record will be skipped.\n")
         for entry in expenses:
             if not ( entry['date'] or entry['category']  or entry['amount'] or entry['description'] ):
                 continue
