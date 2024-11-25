@@ -1,0 +1,305 @@
+Script started on Mon Nov 25 15:40:14 2024
+[1m[7m%[27m[1m[0m                                                                                                                     
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 01-Personal_Expense_Tracker % [K[?2004h[?2004l
+
+[1m[7m%[27m[1m[0m                                                                                                                     
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 01-Personal_Expense_Tracker % [K[?2004h//Files/Learning/class/dataScience/simplyLearn/0-git/1-Programming_Refresher/project/01-P 
+[Ke
+ersonal_Expense_Tracker/01-PersomalExpenseTracker.py[?2004l
+
+
+Loading previous saved expenses in expenses.csv...
+
+
+Completed.
+
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 1
+Enter expense date (YYYY-MM-DD): 2024-11-25 4
+Enter expense category: l food
+Enter expense amount ($$.$$): lunch     19.99
+Enter expense description: lunch
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 1
+Enter expense date (YYYY-MM-DD): 2024-11-24
+Enter expense category: food
+Enter expense amount ($$.$$): 30
+Enter expense description: dinner
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 1
+Enter expense date (YYYY-MM-DD): 2024-11-25
+Enter expense category: food
+Enter expense amount ($$.$$): 1 21.00
+Enter expense description: lunch
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 1
+Enter expense date (YYYY-MM-DD): 2024-11-25
+Enter expense category: entertainment
+Enter expense amount ($$.$$): 40
+Enter expense description: a gaming
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 2
+Note: If there's any entry with empty value, the record will be skipped.
+
+
+Date: 2024-11-24	Category: food	Amount: 19.99	Description: lunch
+
+Date: 2024-11-24	Category: food	Amount: 30.0	Description: dinner
+
+Date: 2024-11-25	Category: food	Amount: 21.0	Description: lunch
+
+Date: 2024-11-25	Category: entertainment	Amount: 40.0	Description: gaming
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 3
+Enter the budget for this month ($$.$$): 100
+Wanring: You have exceeded your budget by  10.99  this month!
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 3
+Enter the budget for this month ($$.$$): 200.00
+You still have 89.01 left in your budget for the month.
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 4
+Expenses are written to expenses.csv
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 5
+[1m[7m%[27m[1m[0m                                                                                                                     
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 01-Personal_Expense_Tracker % [K[?2004h//Files/Learning/class/dataScience/.venv/bin/python /Volumes/homes/admin/Files/Learning/class/dataScience/simplyLearn/0-git/1-Programming_Refresher/project/01-Personal_Expense_Tracker/01-PersomalExpenseTracker.py[K[?2004l
+
+
+Loading previous saved expenses in expenses.csv...
+
+
+Completed.
+
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 2
+Note: If there's any entry with empty value, the record will be skipped.
+
+
+Date: 2024-11-24	Category: food	Amount: 19.99	Description: lunch
+
+Date: 2024-11-24	Category: food	Amount: 30.0	Description: dinner
+
+Date: 2024-11-25	Category: food	Amount: 21.0	Description: lunch
+
+Date: 2024-11-25	Category: entertainment	Amount: 40.0	Description: gaming
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 1
+Enter expense date (YYYY-MM-DD): 1 2024-11-25
+Enter expense category: food
+Enter expense amount ($$.$$): 40.00  99
+Enter expense description: dinner
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 2
+Note: If there's any entry with empty value, the record will be skipped.
+
+
+Date: 2024-11-24	Category: food	Amount: 19.99	Description: lunch
+
+Date: 2024-11-24	Category: food	Amount: 30.0	Description: dinner
+
+Date: 2024-11-25	Category: food	Amount: 21.0	Description: lunch
+
+Date: 2024-11-25	Category: entertainment	Amount: 40.0	Description: gaming
+
+Date: 2024-11-25	Category: food	Amount: 40.99	Description: dinner
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 4
+Expenses are written to expenses.csv
+
+        ######################################################
+        ########## Welcome to Ivy's Expense Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Add expense
+        2)    View expenses
+        3)    Track budget
+        4)    Save expenses
+        5)    Exit
+        
+        
+Please enter the number of the option to continue (1-5): 5
+[1m[7m%[27m[1m[0m                                                                                                                     
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 01-Personal_Expense_Tracker % [K[?2004h[?2004l
+
+
+Script done on Mon Nov 25 15:43:45 2024

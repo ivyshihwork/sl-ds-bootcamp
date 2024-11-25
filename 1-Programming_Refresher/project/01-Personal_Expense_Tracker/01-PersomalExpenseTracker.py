@@ -104,9 +104,9 @@ def trackBudget():
         
     amount=sum([ float(entry['amount']) for entry in appliedExpenses])
     if amount > budget:
-        print("Wanring: You have exceeded your budget by ", amount-budget, ' this month!')
+        print("Wanring: You have exceeded your budget by ", round(amount-budget, 2), ' this month!')
     else:
-        print(f"You still have {budget - amount} left in your budget for the month.")
+        print(f"You still have {round(budget - amount,2)} left in your budget for the month.")
 
 def saveExpenses():
     with open(filename, 'w') as file:
