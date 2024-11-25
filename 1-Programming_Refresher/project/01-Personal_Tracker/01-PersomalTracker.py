@@ -6,13 +6,6 @@ expenses=[]
 # expense csv
 filename="expenses.csv"
 
-# # test data 
-# expenses=[{}, {'date': '2024-09-18', 'category': 'Food', 'amount': 15.50, 'description': 'Lunch with friends'}]
-# expenses=[
-#     {'date': '2024-09-18', 'category': 'Food', 'amount': 15.50, 'description': 'Lunch with friends'},
-#     {'date': '2024-09-18', 'category': 'Entertainment', 'amount': 19.50, 'description': 'movie'},
-#     {'date': '2024-09-12', 'category': 'Food', 'amount': 20.50, 'description': 'dinner'}
-#  ]
 
 def addExpense(): 
     # eDate, eCategory,eAmount, eDescription
