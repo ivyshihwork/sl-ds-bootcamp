@@ -1,4 +1,5 @@
-from datetime import datetime
+import datetime
+from datetime import datetime as dt
 import os
 # Store the expense in a list as a dictionary
 expenses=[]
@@ -6,26 +7,23 @@ expenses=[]
 # expense csv
 filename="expenses.csv"
 
-# # test data 
-# expenses=[{}, {'date': '2024-09-18', 'category': 'Food', 'amount': 15.50, 'description': 'Lunch with friends'}]
-# expenses=[
-#     {'date': '2024-09-18', 'category': 'Food', 'amount': 15.50, 'description': 'Lunch with friends'},
-#     {'date': '2024-09-18', 'category': 'Entertainment', 'amount': 19.50, 'description': 'movie'},
-#     {'date': '2024-09-12', 'category': 'Food', 'amount': 20.50, 'description': 'dinner'}
-#  ]
+# utility function
+def last_day_of_month(any_day):
+    next_month = any_day.replace(day=28) + datetime.timedelta(days=4)
+    return next_month - datetime.timedelta(days=next_month.day)
 
 def addExpense(): 
     # eDate, eCategory,eAmount, eDescription
     # {'date': '2024-09-18', 'category': 'Food', 'amount': 15.50, 'description': 'Lunch with friends'}
     entry={}
     
-    # get date
+    # eDate
     eDate=input("Enter expense date (YYYY-MM-DD): ")
     date_format = "%Y-%m-%d"
     result = False
     while result == False:
         try:
-            result = bool(datetime.strptime(eDate, date_format))
+            result = bool(datetime.datetime.strptime(eDate, date_format))
         except ValueError:
             print("\nInvalid date format/range.  Please try again.\n")
             eDate=input("Enter expense date (YYYY-MM-DD): ")
@@ -40,7 +38,7 @@ def addExpense():
     # eAmount
     result=False
     while result == False:
-        # 3 cond:  number w !=2 dec, string
+        # 2 cond:  number w !=2 dec, string
         try:
             eAmount=float(input("Enter expense amount ($$.$$): "))
         except ValueError:
@@ -49,7 +47,7 @@ def addExpense():
 
         stringEAmount=str(eAmount)
         if len(stringEAmount[stringEAmount.rfind('.')+1:]) > 2:
-            print("\nInvalid value. Please enter 2 decimals.\n")
+            print("\nInvalid value. Please enter less than 2 decimals.\n")
             continue
 
         if isinstance(eAmount, float):
@@ -76,24 +74,37 @@ def viewExpenses():
     
 def trackBudget():
     result=False
+   
     while result == False:
         # 2 cond:  number w !=2 dec, string
         try:
-            budget=float(input("Enter expense amount ($$.$$): "))
+            budget=float(input("Enter the budget for this month ($$.$$): "))
         except ValueError:
             print("\nInvalid value.  Please enter a numeric value.\n")
-            budget=float(input("Enter expense amount: "))
+            budget=float(input("Enter the budget for this month ($$.$$): "))
 
         if str(budget)[::-1].find('.') > 2:
-            print("\nInvalid value. Please enter 2 decimals.\n")
+            print("\nInvalid value. Please enter less than 2 decimals.\n")
             continue
         
         if isinstance(budget, float):
             result=True
             
-    amount=sum([ float(entry['amount']) for entry in expenses])
+    appliedExpenses=[]
+    currentMonth=dt.now().month
+    currentYear=dt.now().year
+    lastCurrentMonth=last_day_of_month(datetime.date(currentYear, currentMonth, 1))
+    firstCurrentMonth = datetime.date(currentYear, currentMonth, 1)
+
+    for entry in expenses:
+        date=datetime.datetime.strptime(entry['date'],"%Y-%m-%d")
+
+        if (date.date()>= firstCurrentMonth and date.date()<= lastCurrentMonth):
+            appliedExpenses.append(entry)
+        
+    amount=sum([ float(entry['amount']) for entry in appliedExpenses])
     if amount > budget:
-        print("Wanring: You have exceeded your budget by ", amount-budget, '!')
+        print("Wanring: You have exceeded your budget by ", amount-budget, ' this month!')
     else:
         print(f"You still have {budget - amount} left in your budget for the month.")
 
