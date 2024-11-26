@@ -15,7 +15,6 @@ Once logged in, users can create, view, update, and delete their tasks. Each use
 |-|-|
 |expenses|It is a list of dictionaries of each record of expenses.|
 |filename|- It is the filename of saved experiences and where the program load expenses from in the beginning of execution.<br>- It has to be in the same execution directory as the program to be loaded/saved to.|
-|||
 
 ## Functions
 Here are the list of steps and what are required with additional details of implementation:
