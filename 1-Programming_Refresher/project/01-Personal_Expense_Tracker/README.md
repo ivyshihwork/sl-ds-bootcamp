@@ -1,4 +1,4 @@
-# Project 01 - Personal Tracker
+# Project 01 - Personal Expense Tracker
   by Ivy Shih   2024-11-25
 
 This document is created to show the requirement and actual implementation of the program.
