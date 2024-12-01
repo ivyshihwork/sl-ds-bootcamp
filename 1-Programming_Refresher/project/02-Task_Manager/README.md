@@ -13,12 +13,14 @@ Once logged in, users can create, view, update, and delete their tasks. Each use
 
 |Name|Description|
 |-|-|
-|expenses|It is a list of dictionaries of each record of expenses.|
-|filename|- It is the filename of saved experiences and where the program load expenses from in the beginning of execution.<br>- It has to be in the same execution directory as the program to be loaded/saved to.|
+|loginName|It is the user's loginName|
+|password|It is user's password|
+|passwordFile|It is the file contains the user loginName and encrypted password|<br>- It has to be in the same execution directory as the program to be loaded/saved to.|
+|filename|- It is the filename of saved taks and where the program load task list.<br>- It has to be in the same execution directory as the program to be loaded/saved to.|
+
 
 ## Functions
 Here are the list of steps and what are required with additional details of implementation:
-|||||
 |Step|Function Name| Requirements| Implementation Details |
 |-|-|-|-|
 |1.1|registration|- Create a function to prompt the user to enter a username and password<br>- Ensure that the username is unique, and hash the password for security before storing it in a file||
