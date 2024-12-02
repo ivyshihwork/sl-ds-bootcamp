@@ -149,9 +149,7 @@ def viewTasks():
     else:
         print("{:<5} {:<20} {:<10}".format('ID','Description','Status'))
         print("{:<5} {:<20} {:<10}".format('--','-----------','------'))
-                                        
         for task in tasks:
-            # print(f"{task['taskID']}\t{task['description']}\t{task['status']}")
             print("{:<5} {:<20} {:<10}".format(task['taskID'],task['description'],task['status']))
 
 # Step 4    completeTask

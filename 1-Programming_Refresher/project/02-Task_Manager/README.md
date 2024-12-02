@@ -11,17 +11,17 @@ You are tasked with building a Task Manager that allows users to manage their ta
 The system should include user authentication, meaning each user has to log in with a username and password. 
 Once logged in, users can create, view, update, and delete their tasks. Each user’s tasks should be stored separately, and only the authenticated user can access their tasks.
 
+## Global variables
+
 |Name|Description|
 |-|-|
-|loginName|It is the user's loginName|
-|password|It is user's password|
-|passwordFile|It is the file contains the user loginName and encrypted password|<br>- It has to be in the same execution directory as the program to be loaded/saved to.|
-|filename|- It is the filename of saved taks and where the program load task list.<br>- It has to be in the same execution directory as the program to be loaded/saved to.|
+|loginFile|Store user login and encrypted passwords.  Default value is login.csv|
+|userLogin|Store User login if authenticated successfully|
+|taskFile|Task file for the individual.  It should be {usrLogin}.csv since tasks are stored separately per requirment.|
 
 
 ## Functions
-Here are the list of steps and what are required with additional details of implementation:
-|Step|Function Name| Requirements| Implementation Details |
+Here are the list of required steps/function names with additional details of implementation:
 |-|-|-|-|
 |1.1|registration|- Create a function to prompt the user to enter a username and password<br>- Ensure that the username is unique, and hash the password for security before storing it in a file||
 |1.2|login|Create a function to prompt the user for their username and password, validate the credentials by comparing them with the stored data, and grant access to the task manager upon successful login||

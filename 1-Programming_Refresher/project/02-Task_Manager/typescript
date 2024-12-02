@@ -1,0 +1,360 @@
+Script started on Sun Dec  1 19:36:31 2024
+[1m[7m%[27m[1m[0m                                                                                                                                                               
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 02-Task_Manager % [K[?2004h[?2004l
+
+[1m[7m%[27m[1m[0m                                                                                                                                                               
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 02-Task_Manager % [K[?2004h//dataScience/.venv/bin/python /1-Programming_Refresher/project/02-Task_Manager/02-TaskManager.py[?2004l
+
+
+        ######################################################
+        ########## Welcome to Ivy's Task Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Create/Register for user 
+        2)    Login
+        3)    Exit Task Manager
+        
+Please enter the number of the option to continue (1-5): 2
+There is no user in the system.  Please register a user firs!
+
+
+        ######################################################
+        ########## Welcome to Ivy's Task Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Create/Register for user 
+        2)    Login
+        0)    Exit Task Manager
+        
+Please enter the number of the option to continue (1-5): 1
+PLease enter a login name: 
+
+Login name can not be empty.  Please try again.
+
+PLease enter a login name: ivy
+Pease enter a password for ivy: 
+Password can not be empty.  Please try again.
+
+PLease enter a login name: ivy
+Pease enter a password for ivy: test
+User ivy has been created and saved successfully!
+
+
+        ######################################################
+        ########## Welcome to Ivy's Task Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Create/Register for user 
+        2)    Login
+        0)    Exit Task Manager
+        
+Please enter the number of the option to continue (1-5): 2
+PLease enter your user name: ivy
+Pease enter password for ivy: test
+User ivy has been created and saved successfully!
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 2
+There's no task for ivy
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 1
+Please enter task description: test1
+
+Task has been added successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 1
+Please enter task description: test2
+
+Task has been added successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 1
+Please enter task description: test3
+
+Task has been added successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 1
+Please enter task description: test4
+
+Task has been added successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 2
+ID    Description          Status    
+--    -----------          ------    
+0     test1                Pending   
+1     test2                Pending   
+2     test3                Pending   
+3     test4                Pending   
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 3
+ID    Description          Status    
+--    -----------          ------    
+0     test1                Pending   
+1     test2                Pending   
+2     test3                Pending   
+3     test4                Pending   
+Enter the task number to complete the task: 5
+
+Invalid selection.  Please try again.
+
+Enter the task number to complete the task: 0
+
+Task has been completed successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 2
+ID    Description          Status    
+--    -----------          ------    
+0     test1                Completed 
+1     test2                Pending   
+2     test3                Pending   
+3     test4                Pending   
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 4
+ID    Description          Status    
+--    -----------          ------    
+0     test1                Completed 
+1     test2                Pending   
+2     test3                Pending   
+3     test4                Pending   
+Enter the task number to delete the task: 3 2
+
+Task {answer} has been deleted successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 2
+ID    Description          Status    
+--    -----------          ------    
+0     test1                Completed 
+1     test2                Pending   
+3     test4                Pending   
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 1
+Please enter task description: test again
+
+Task has been added successfully.  Go to View Tasks option to see updated task list.
+
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 2
+ID    Description          Status    
+--    -----------          ------    
+0     test1                Completed 
+1     test2                Pending   
+3     test4                Pending   
+4     test again           Pending   
+
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
+            
+            Hello, ivy!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            
+Please enter the number of the option to continue (1-5): 0
+
+        ######################################################
+        ########## Welcome to Ivy's Task Manager ##########
+        ######################################################
+        
+        Please select one of the options below to continue:
+        
+        1)    Create/Register for user 
+        2)    Login
+        0)    Exit Task Manager
+        
+Please enter the number of the option to continue (1-5): 0
+[1m[7m%[27m[1m[0m                                                                                                                                                               
+ 
+
+[0m[27m[24m[J(base) ivyshih@MacBook-Air 02-Task_Manager % [K[?2004h[?2004l
+
+Script done on Sun Dec  1 19:39:12 2024
