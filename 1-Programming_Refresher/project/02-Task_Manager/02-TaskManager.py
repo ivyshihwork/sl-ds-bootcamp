@@ -67,6 +67,10 @@ def login():
     '''
     global userLogin
     global taskFile
+    
+    if not os.path.exists(loginFile):
+        print("There is no user in the system.  Please register a user firs!\n")
+        return False
     while True:
         login=input("PLease enter your user name: ")
         if not login:
@@ -140,12 +144,15 @@ def viewTasks():
     '''
     global userLogin
     tasks=loadTasks(userLogin)
-    print("{:<5} {:<20} {:<10}".format('ID','Description','Status'))
-    print("{:<5} {:<20} {:<10}".format('--','-----------','------'))
-                                    
-    for task in tasks:
-        # print(f"{task['taskID']}\t{task['description']}\t{task['status']}")
-        print("{:<5} {:<20} {:<10}".format(task['taskID'],task['description'],task['status']))
+    if not tasks:
+        print(f"There's no task for {userLogin}\n")
+    else:
+        print("{:<5} {:<20} {:<10}".format('ID','Description','Status'))
+        print("{:<5} {:<20} {:<10}".format('--','-----------','------'))
+                                        
+        for task in tasks:
+            # print(f"{task['taskID']}\t{task['description']}\t{task['status']}")
+            print("{:<5} {:<20} {:<10}".format(task['taskID'],task['description'],task['status']))
 
 # Step 4    completeTask
 def completeTask():
