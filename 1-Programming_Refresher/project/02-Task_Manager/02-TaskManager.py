@@ -141,7 +141,8 @@ def viewTasks():
     global userLogin
     tasks=loadTasks(userLogin)
     print("{:<5} {:<20} {:<10}".format('ID','Description','Status'))
-    print("{:<5} {:<20} {:<10}".format('--','-----------','------))
+    print("{:<5} {:<20} {:<10}".format('--','-----------','------'))
+                                    
     for task in tasks:
         # print(f"{task['taskID']}\t{task['description']}\t{task['status']}")
         print("{:<5} {:<20} {:<10}".format(task['taskID'],task['description'],task['status']))
@@ -151,14 +152,45 @@ def completeTask():
     '''
     This allows the user to select a task by its ID and update its status to Completed.
     '''
-    pass
+    global userLogin
+    tasks=loadTasks(userLogin)
+    viewTasks()
+    while True:
+        answer=input("Enter the task number to complete the task: ")
+        if answer in [ task['taskID'] for task in tasks]:
+            change=[ task for task in tasks if task['taskID']== answer][0]
+            tasks.remove(change)
+            change['status']='Completed'
+            tasks.append(change)
+            tasks=sorted(tasks, key=lambda k: k['taskID'])
+            with open(taskFile, 'w') as file:
+                for task in tasks:
+                    file.write(f"{task['taskID']},{task['description']},{task['status']}\n")
+            print("\nTask has been completed successfully.  Go to View Tasks option to see updated task list.\n")
+            break
+        else:
+            print('\nInvalid selection.  Please try again.\n')
+    
 
 # Step 5    deleteTask
 def deleteTask():
     '''
     This allows the user to select a task by its ID and delete it from their task list.
     '''
-    pass
+    global userLogin
+    tasks=loadTasks(userLogin)
+    viewTasks()
+    while True:
+        answer=input("Enter the task number to delete the task: ")
+        if answer in [ task['taskID'] for task in tasks]:
+            tasks=[ task for task in tasks if task['taskID']!= answer]
+            with open(taskFile, 'w') as file:
+                for task in tasks:
+                    file.write(f"{task['taskID']},{task['description']},{task['status']}\n")
+            print("\nTask {answer} has been deleted successfully.  Go to View Tasks option to see updated task list.\n")
+            break
+        else:
+            print('\nInvalid selection.  Please try again.\n')
 
 # Step 6    displayMenu()
 def displayMenu():
@@ -173,6 +205,7 @@ def displayMenu():
 
     For each option, call the corresponding function, and loop back to the menu until the user logs out.	
     '''
+    global userLogin
     while True:
         print(f"""
             ######################################################
@@ -209,9 +242,8 @@ def displayMenu():
             case 4:
                 deleteTask()
             case 0:
+                userLogin=""
                 break
-
-
             
 if __name__ == "__main__":
 
