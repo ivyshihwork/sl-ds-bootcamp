@@ -2,12 +2,27 @@ import os
 import hashlib
 
 # Global variable
-loginFile='login.csv'  #Store user login and encrypted passwords
+loginFile='login.csv'   #Store user login and encrypted passwords
 userLogin=""            #Store User login if authenticated successfully
+taskFile=""             # Task file for the individual.  It should be {usrLogin}.csv since tasks are stored separately per requirment
 
 # utility function
 def encrypt(password):
-  return hashlib.sha256(password.encode()).hexdigest()
+    return hashlib.sha256(password.encode()).hexdigest()
+
+def loadTasks(login):
+    tasks=[]
+    taskFile=login + '.csv'
+    if os.path.exists(taskFile):
+        with open(taskFile, 'r+') as file:
+            line = file.readline()
+            while line:
+                task={}
+                task['taskID'], task['description'],task['status'] = line.strip().split(',')
+                tasks.append(task)
+                line = file.readline()
+    return tasks
+
 
 # Step 1.1 registration
 def registration():
@@ -43,7 +58,6 @@ def registration():
                         print(f"User {login} has been created and saved successfully!\n")
                         break
                 
-
 # Step 1.2 login
 def login():
     '''
@@ -52,6 +66,7 @@ def login():
     - Grant access to the task manager upon successful login
     '''
     global userLogin
+    global taskFile
     while True:
         login=input("PLease enter your user name: ")
         if not login:
@@ -76,6 +91,7 @@ def login():
                         if encrypt(password) == [e['password'] for e in entries if e['login'] == login ][0]:
                             print(f"User {login} has been created and saved successfully!\n")
                             userLogin=login
+                            taskFile=userLogin +'.csv'
                             displayMenu()
                             break
                         else:
@@ -92,7 +108,29 @@ def addTask():
     • Assign a unique task ID and set the status to Pending
     • Store the task in a file, and confirm that the task was added
     '''
-    pass
+    # TaskID, Description, Status
+    global userLogin
+    global taskFile
+    tasks=loadTasks(userLogin)
+
+    if not os.path.exists(taskFile):
+        file = open(taskFile, 'w')
+        file.close()
+        newID=0
+    else:
+        newID=int(tasks[-1]['taskID'])+1
+        
+    with open(taskFile, 'a') as file:
+        while True:
+            description=input("Please enter task description: ")
+            if not description:
+                print("Task must have a description.  Please try again.\n")
+            # elif description in [  task['description'] for task in tasks ]:
+            #     print("There is already another task with exact description.  Please be specific./n")
+            else:
+                file.write(f"{newID},{description},Pending\n")
+                print("\nTask has been added successfully.  Go to View Tasks option to see updated task list.\n")
+                break
 
 # Step 3    viewTasks
 def viewTasks():
@@ -100,7 +138,13 @@ def viewTasks():
     • Create a function to retrieve and display all tasks for the logged-in user
     • Each task should show the task ID, description, and status (Pending or Completed)
     '''
-    pass
+    global userLogin
+    tasks=loadTasks(userLogin)
+    print("{:<5} {:<20} {:<10}".format('ID','Description','Status'))
+    print("{:<5} {:<20} {:<10}".format('--','-----------','------))
+    for task in tasks:
+        # print(f"{task['taskID']}\t{task['description']}\t{task['status']}")
+        print("{:<5} {:<20} {:<10}".format(task['taskID'],task['description'],task['status']))
 
 # Step 4    completeTask
 def completeTask():
