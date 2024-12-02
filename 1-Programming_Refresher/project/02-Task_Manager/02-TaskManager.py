@@ -32,7 +32,6 @@ def registration():
                     entry['login'], entry['password'] = line.strip().split(',')
                     entries.append(entry)
                     line = file.readline()
-                    print("\nCompleted.\n")
                 if login in [ entry['login'] for entry in entries ]:
                     print("Login exists.  Please create pick a different user name or proceed to login instead.\n")
                 else:
@@ -40,7 +39,7 @@ def registration():
                     if not password:
                         print("Password can not be empty.  Please try again.\n")
                     else:
-                        file.write(f"{login},{encrypt(password)}")
+                        file.write(f"{login},{encrypt(password)}\n")
                         print(f"User {login} has been created and saved successfully!\n")
                         break
                 
@@ -52,7 +51,39 @@ def login():
     - Validate the credentials by comparing them with the stored data
     - Grant access to the task manager upon successful login
     '''
-    pass
+    global userLogin
+    while True:
+        login=input("PLease enter your user name: ")
+        if not login:
+            print("\nLogin name can not be empty.  Please try again.\n")
+        else:
+            if not os.path.exists(loginFile):
+                file = open(loginFile, 'w')
+                file.close()
+            with open(loginFile, 'r+') as file:
+                line = file.readline()
+                entries=[]
+                while line:
+                    entry={}
+                    entry['login'], entry['password'] = line.strip().split(',')
+                    entries.append(entry)
+                    line = file.readline()
+                if login in [ entry['login'] for entry in entries ]:
+                    password=input(f'Pease enter password for {login}: ')
+                    if not password:
+                        print("Password can not be empty.  Please try again.\n")
+                    else:
+                        if encrypt(password) == [e['password'] for e in entries if e['login'] == login ][0]:
+                            print(f"User {login} has been created and saved successfully!\n")
+                            userLogin=login
+                            displayMenu()
+                            break
+                        else:
+                            print("Invalid password.  Please try again.\n")
+                            break
+                else:
+                    print(f"\nUser name {login} does not exist.  Please register for user name.\n")
+                    break
 
 # Step 2   addTask
 def addTask():
@@ -87,6 +118,7 @@ def deleteTask():
 
 # Step 6    displayMenu()
 def displayMenu():
+
     '''
     • Build a menu that allows users to choose between:
         o Add a Task
@@ -97,40 +129,43 @@ def displayMenu():
 
     For each option, call the corresponding function, and loop back to the menu until the user logs out.	
     '''
-    print("""
-        ######################################################
-        ########## Welcome to Ivy's Task Manager ##########
-        ######################################################
-        
-        Please select one of the options below to continue:
-        
-        1)    Add a Task
-        2)    View Tasks
-        3)    Mark a Task as Completed
-        4)    Delete a Task
-        0)    Log out and exit the program
-        """)
     while True:
-            try:
-                answer=int(input("Please enter the number of the option to continue (1-5): "))
-            except ValueError:
-                print("\nInvalid selection.  Please enter a number to continue (1-5): ")
-                if not ( answer >0 and answer <=5 ):
-                    print("\nInvalid selection.  Please enter a number to continue (1-5): ")
-            else:
-                break
+        print(f"""
+            ######################################################
+            ########## Welcome to Ivy's Task Manager #############
+            ######################################################
             
-    match answer:
-        case 1:
-            addTask()
-        case 2:
-            viewTasks()
-        case 3:
-            completeTask()
-        case 4:
-            deleteTask()
-        case 0:
-            exit
+            Hello, {userLogin}!
+            
+            Please select one of the options below to continue:
+            
+            1)    Add a Task
+            2)    View Tasks
+            3)    Mark a Task as Completed
+            4)    Delete a Task
+            0)    Log out
+            """)
+        while True:
+                try:
+                    answer=int(input("Please enter the number of the option to continue (1-5): "))
+                except ValueError:
+                    print("\nInvalid selection.  Please enter a number to continue (1-5): ")
+                    if not ( answer >0 and answer <=5 ):
+                        print("\nInvalid selection.  Please enter a number to continue (1-5): ")
+                else:
+                    break
+                
+        match answer:
+            case 1:
+                addTask()
+            case 2:
+                viewTasks()
+            case 3:
+                completeTask()
+            case 4:
+                deleteTask()
+            case 0:
+                break
 
 
             
@@ -146,7 +181,7 @@ if __name__ == "__main__":
         
         1)    Create/Register for user 
         2)    Login
-        0)    Log out and exit the program
+        0)    Exit Task Manager
         """)
         while True:
             try:
