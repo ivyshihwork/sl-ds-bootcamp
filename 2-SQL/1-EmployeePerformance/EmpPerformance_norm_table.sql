@@ -1,6 +1,7 @@
--- -- allow loading of local file
+-- To get MYSQL Workbench to work with load data file:
 -- SHOW GLOBAL VARIABLES LIKE 'local_infile';
 -- SET GLOBAL local_infile = true;
+-- RELAXES CHECK ON STORED FUNCTION => SET GLOBAL log_bin_trust_function_creators = 1;
 
 drop database if exists employee;
 create database employee;
@@ -29,7 +30,7 @@ CREATE TABLE PROJ_TABLE (
 
 -- select * from PROJ_TABLE;
 
-LOAD DATA LOCAL INFILE '/Volumes/home/Files/Learning/class/dataScience/simplyLearn/2-sql/Project/EmpPerformance/1697127874_performance_mapping_datasets/proj_table.csv'
+LOAD DATA LOCAL INFILE 'datasets/proj_table.csv'
 INTO TABLE PROJ_TABLE
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -59,15 +60,13 @@ CREATE TABLE EMP_RECORD_TABLE (
 );
 
 
-LOAD DATA LOCAL INFILE '/Volumes/home/Files/Learning/class/dataScience/simplyLearn/2-sql/Project/EmpPerformance/1697127874_performance_mapping_datasets/emp_record_table.csv'
+LOAD DATA LOCAL INFILE 'datasets/emp_record_table.csv'
 INTO TABLE EMP_RECORD_TABLE
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (EMP_ID,FIRST_NAME,LAST_NAME,GENDER,ROLE,DEPT,EXP,COUNTRY,CONTINENT,SALARY,EMP_RATING,MANAGER_ID,PROJ_ID);
-
-select * from EMP_RECORD_TABLE;
 
 -- proj_emp_table
 
@@ -100,7 +99,7 @@ CREATE TABLE DATA_SCIENCE_TEAM (
     FOREIGN KEY (EMP_ID) REFERENCES EMP_RECORD_TABLE(EMP_ID)
 );
 
-LOAD DATA LOCAL INFILE '/Volumes/home/Files/Learning/class/dataScience/simplyLearn/2-sql/Project/EmpPerformance/1697127874_performance_mapping_datasets/data_science_team.csv'
+LOAD DATA LOCAL INFILE 'datasets/data_science_team.csv'
 INTO TABLE DATA_SCIENCE_TEAM
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -118,7 +117,3 @@ DROP COLUMN DEPT,
 DROP COLUMN EXP,
 DROP COLUMN COUNTRY,
 DROP COLUMN CONTINENT;
-
-select * from DATA_SCIENCE_TEAM;
-DESCRIBE DATA_SCIENCE_TEAM
-
