@@ -1,0 +1,428 @@
+Script started on Mon Jan 20 23:01:04 2025
+0m27m24mJ(base)kivyshih@MacBook-Airy~h%hK?2004hmysql -u root -p?2004l
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 53
+Server version: 9.1.0 Homebrew
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use employee
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> -- 3. Write a query to fetch EMP_ID, FIRST_NAME, LAST_NAME, GENDER, and DEPARTMENT from the employee record table,
+mysql> -- and make a list of employees and details of their department.
+mysql>
+mysql> SELECT  EMP_ID, FIRST_NAME, LAST_NAME, GENDER, DEPT AS DEPARTMENT FROM EMP_RECORD_TABLE ORDER BY DEPT;
++--------+------------+-----------+--------+------------+
+| EMP_ID | FIRST_NAME | LAST_NAME | GENDER | DEPARTMENT |
++--------+------------+-----------+--------+------------+
+| E001	 | Arthur     | Black	  | M	   | ALL	|
+| E010	 | William    | Butler	  | M	   | AUTOMOTIVE |
+| E204	 | Karene     | Nowak	  | F	   | AUTOMOTIVE |
+| E428	 | Pete       | Allen	  | M	   | AUTOMOTIVE |
+| E532	 | Claire     | Brennan   | F	   | AUTOMOTIVE |
+| E005	 | Eric       | Hoffman   | M	   | FINANCE	|
+| E103	 | Emily      | Grove	  | F	   | FINANCE	|
+| E403	 | Steve      | Hoffman   | M	   | FINANCE	|
+| E052	 | Dianna     | Wilson	  | F	   | HEALTHCARE |
+| E057	 | Dorothy    | Wilson	  | F	   | HEALTHCARE |
+| E083	 | Patrick    | Voltz	  | M	   | HEALTHCARE |
+| E505	 | Chad       | Wilson	  | M	   | HEALTHCARE |
+| E245	 | Nian       | Zhen	  | M	   | RETAIL	|
+| E260	 | Roy	      | Collins   | M	   | RETAIL	|
+| E478	 | David      | Smith	  | M	   | RETAIL	|
+| E583	 | Janet      | Hale	  | F	   | RETAIL	|
+| E612	 | Tracy      | Norris	  | F	   | RETAIL	|
+| E620	 | Katrina    | Allen	  | F	   | RETAIL	|
+| E640	 | Jenifer    | Jhones	  | F	   | RETAIL	|
++--------+------------+-----------+--------+------------+
+19 rows in set (0.01 sec)
+
+mysql> -- 4. Write a query to fetch EMP_ID, FIRST_NAME, LAST_NAME, GENDER, DEPARTMENT, and EMP_RATING if the EMP_RATING is:
+mysql> -- less than two
+mysql> -- greater than four
+mysql> -- between two and four
+mysql>
+mysql> SELECT  EMP_ID, FIRST_NAME, LAST_NAME, GENDER, DEPT AS DEPARTMENT, EMP_RATING FROM EMP_RECORD_TABLE
+    -> WHERE EMP_RATING <2;
++--------+------------+-----------+--------+------------+------------+
+| EMP_ID | FIRST_NAME | LAST_NAME | GENDER | DEPARTMENT | EMP_RATING |
++--------+------------+-----------+--------+------------+------------+
+| E057	 | Dorothy    | Wilson	  | F	   | HEALTHCARE |	   1 |
+| E532	 | Claire     | Brennan   | F	   | AUTOMOTIVE |	   1 |
+| E620	 | Katrina    | Allen	  | F	   | RETAIL	|	   1 |
++--------+------------+-----------+--------+------------+------------+
+3 rows in set (0.01 sec)
+
+mysql> SELECT  EMP_ID, FIRST_NAME, LAST_NAME, GENDER, DEPT AS DEPARTMENT, EMP_RATING FROM EMP_RECORD_TABLE
+    -> WHERE EMP_RATING >4;
++--------+------------+-----------+--------+------------+------------+
+| EMP_ID | FIRST_NAME | LAST_NAME | GENDER | DEPARTMENT | EMP_RATING |
++--------+------------+-----------+--------+------------+------------+
+| E001	 | Arthur     | Black	  | M	   | ALL	|	   5 |
+| E052	 | Dianna     | Wilson	  | F	   | HEALTHCARE |	   5 |
+| E083	 | Patrick    | Voltz	  | M	   | HEALTHCARE |	   5 |
+| E204	 | Karene     | Nowak	  | F	   | AUTOMOTIVE |	   5 |
++--------+------------+-----------+--------+------------+------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT  EMP_ID, FIRST_NAME, LAST_NAME, GENDER, DEPT AS DEPARTMENT, EMP_RATING FROM EMP_RECORD_TABLE
+    -> WHERE EMP_RATING BETWEEN 2 AND 4 ORDER BY EMP_RATING;
++--------+------------+-----------+--------+------------+------------+
+| EMP_ID | FIRST_NAME | LAST_NAME | GENDER | DEPARTMENT | EMP_RATING |
++--------+------------+-----------+--------+------------+------------+
+| E010	 | William    | Butler	  | M	   | AUTOMOTIVE |	   2 |
+| E245	 | Nian       | Zhen	  | M	   | RETAIL	|	   2 |
+| E505	 | Chad       | Wilson	  | M	   | HEALTHCARE |	   2 |
+| E583	 | Janet      | Hale	  | F	   | RETAIL	|	   2 |
+| E005	 | Eric       | Hoffman   | M	   | FINANCE	|	   3 |
+| E260	 | Roy	      | Collins   | M	   | RETAIL	|	   3 |
+| E403	 | Steve      | Hoffman   | M	   | FINANCE	|	   3 |
+| E103	 | Emily      | Grove	  | F	   | FINANCE	|	   4 |
+| E428	 | Pete       | Allen	  | M	   | AUTOMOTIVE |	   4 |
+| E478	 | David      | Smith	  | M	   | RETAIL	|	   4 |
+| E612	 | Tracy      | Norris	  | F	   | RETAIL	|	   4 |
+| E640	 | Jenifer    | Jhones	  | F	   | RETAIL	|	   4 |
++--------+------------+-----------+--------+------------+------------+
+12 rows in set (0.00 sec)
+
+mysql> -- 5. Write a query to concatenate the FIRST_NAME and the LAST_NAME of employees in the Finance department from the employee table
+mysql> -- and then give the resultant column alias as NAME.
+mysql>
+mysql> SELECT CONCAT(FIRST_NAME,' ', LAST_NAME) AS NAME FROM EMP_RECORD_TABLE
+    -> WHERE DEPT='FINANCE';
++---------------+
+| NAME		|
++---------------+
+| Eric Hoffman	|
+| Emily Grove	|
+| Steve Hoffman |
++---------------+
+3 rows in set (0.01 sec)
+
+mysql> -- 6. Write a query to list only those employees who have someone reporting to them.
+mysql> -- Also, show the number of reporters (including the President).
+mysql> SELECT B.EMP_ID AS MANAGER_ID,COUNT(A.EMP_ID ) AS DIRECT_REPORT_COUNT FROM EMP_RECORD_TABLE A, EMP_RECORD_TABLE B
+    -> WHERE A.MANAGER_ID = B.EMP_ID GROUP BY B.EMP_ID ORDER BY B.EMP_ID ;
++------------+---------------------+
+| MANAGER_ID | DIRECT_REPORT_COUNT |
++------------+---------------------+
+| E001	     |			 5 |
+| E083	     |			 3 |
+| E103	     |			 2 |
+| E428	     |			 3 |
+| E583	     |			 3 |
+| E612	     |			 2 |
++------------+---------------------+
+6 rows in set (0.01 sec)
+
+mysql> -- 7. Write a query to list down all the employees from the healthcare and finance departments using union.
+mysql> -- Take data from the employee record table.
+mysql>
+mysql> SELECT *  FROM EMP_RECORD_TABLE WHERE DEPT='FINANCE'
+    -> UNION DISTINCT
+    -> SELECT * FROM EMP_RECORD_TABLE WHERE DEPT='HEALTHCARE';
++----+--------+------------+-----------+--------+--------------------------+------------+-----+---------+---------------+----------+------------+------------+---------+
+| ID | EMP_ID | FIRST_NAME | LAST_NAME | GENDER | ROLE			   | DEPT	| EXP | COUNTRY | CONTINENT	| SALARY   | EMP_RATING | MANAGER_ID | PROJ_ID |
++----+--------+------------+-----------+--------+--------------------------+------------+-----+---------+---------------+----------+------------+------------+---------+
+|  2 | E005   | Eric	   | Hoffman   | M	| LEAD DATA SCIENTIST	   | FINANCE	|  11 | USA	| NORTH AMERICA |  8500.00 |	      3 | E103	     | P105    |
+|  7 | E103   | Emily	   | Grove     | F	| MANAGER		   | FINANCE	|  14 | CANADA	| NORTH AMERICA | 10500.00 |	      4 | E001	     | NULL    |
+| 11 | E403   | Steve	   | Hoffman   | M	| ASSOCIATE DATA SCIENTIST | FINANCE	|   4 | USA	| NORTH AMERICA |  5000.00 |	      3 | E103	     | P105    |
+|  4 | E052   | Dianna	   | Wilson    | F	| SENIOR DATA SCIENTIST    | HEALTHCARE |   6 | CANADA	| NORTH AMERICA |  5500.00 |	      5 | E083	     | P103    |
+|  5 | E057   | Dorothy    | Wilson    | F	| SENIOR DATA SCIENTIST    | HEALTHCARE |   9 | USA	| NORTH AMERICA |  7700.00 |	      1 | E083	     | P302    |
+|  6 | E083   | Patrick    | Voltz     | M	| MANAGER		   | HEALTHCARE |  15 | USA	| NORTH AMERICA |  9500.00 |	      5 | E001	     | NULL    |
+| 14 | E505   | Chad	   | Wilson    | M	| ASSOCIATE DATA SCIENTIST | HEALTHCARE |   5 | CANADA	| NORTH AMERICA |  5000.00 |	      2 | E083	     | P103    |
++----+--------+------------+-----------+--------+--------------------------+------------+-----+---------+---------------+----------+------------+------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> -- 8. Write a query to list down employee details such as
+mysql> -- EMP_ID, FIRST_NAME, LAST_NAME, ROLE, DEPARTMENT, and EMP_RATING grouped by dept.
+mysql> -- Also include the respective employee rating along with the max emp rating for the department.
+mysql>
+mysql> SELECT EMP_ID, FIRST_NAME, LAST_NAME, ROLE, DEPT, EMP_RATING, MAX(EMP_RATING) OVER( PARTITION BY DEPT) AS MAX_EMP_RATING
+    -> FROM EMP_RECORD_TABLE;
++--------+------------+-----------+--------------------------+------------+------------+----------------+
+| EMP_ID | FIRST_NAME | LAST_NAME | ROLE		     | DEPT	  | EMP_RATING | MAX_EMP_RATING |
++--------+------------+-----------+--------------------------+------------+------------+----------------+
+| E001	 | Arthur     | Black	  | PRESIDENT		     | ALL	  |	     5 |	      5 |
+| E010	 | William    | Butler	  | LEAD DATA SCIENTIST      | AUTOMOTIVE |	     2 |	      5 |
+| E204	 | Karene     | Nowak	  | SENIOR DATA SCIENTIST    | AUTOMOTIVE |	     5 |	      5 |
+| E428	 | Pete       | Allen	  | MANAGER		     | AUTOMOTIVE |	     4 |	      5 |
+| E532	 | Claire     | Brennan   | ASSOCIATE DATA SCIENTIST | AUTOMOTIVE |	     1 |	      5 |
+| E005	 | Eric       | Hoffman   | LEAD DATA SCIENTIST      | FINANCE	  |	     3 |	      4 |
+| E103	 | Emily      | Grove	  | MANAGER		     | FINANCE	  |	     4 |	      4 |
+| E403	 | Steve      | Hoffman   | ASSOCIATE DATA SCIENTIST | FINANCE	  |	     3 |	      4 |
+| E052	 | Dianna     | Wilson	  | SENIOR DATA SCIENTIST    | HEALTHCARE |	     5 |	      5 |
+| E057	 | Dorothy    | Wilson	  | SENIOR DATA SCIENTIST    | HEALTHCARE |	     1 |	      5 |
+| E083	 | Patrick    | Voltz	  | MANAGER		     | HEALTHCARE |	     5 |	      5 |
+| E505	 | Chad       | Wilson	  | ASSOCIATE DATA SCIENTIST | HEALTHCARE |	     2 |	      5 |
+| E245	 | Nian       | Zhen	  | SENIOR DATA SCIENTIST    | RETAIL	  |	     2 |	      4 |
+| E260	 | Roy	      | Collins   | SENIOR DATA SCIENTIST    | RETAIL	  |	     3 |	      4 |
+| E478	 | David      | Smith	  | ASSOCIATE DATA SCIENTIST | RETAIL	  |	     4 |	      4 |
+| E583	 | Janet      | Hale	  | MANAGER		     | RETAIL	  |	     2 |	      4 |
+| E612	 | Tracy      | Norris	  | MANAGER		     | RETAIL	  |	     4 |	      4 |
+| E620	 | Katrina    | Allen	  | JUNIOR DATA SCIENTIST    | RETAIL	  |	     1 |	      4 |
+| E640	 | Jenifer    | Jhones	  | JUNIOR DATA SCIENTIST    | RETAIL	  |	     4 |	      4 |
++--------+------------+-----------+--------------------------+------------+------------+----------------+
+19 rows in set (0.02 sec)
+
+mysql> -- 9. Write a query to calculate the minimum and the maximum salary of the employees in each role.
+mysql> -- Take data from the employee record table.
+mysql>
+mysql> SELECT EMP_ID, FIRST_NAME, LAST_NAME, ROLE, SALARY,
+    ->	   MIN(SALARY) OVER( PARTITION BY ROLE) AS MIN_SALARY,
+    ->	   MAX(SALARY) OVER( PARTITION BY ROLE) AS MAX_SALARY
+    -> FROM EMP_RECORD_TABLE ORDER BY ROLE, SALARY;
++--------+------------+-----------+--------------------------+----------+------------+------------+
+| EMP_ID | FIRST_NAME | LAST_NAME | ROLE		     | SALARY	| MIN_SALARY | MAX_SALARY |
++--------+------------+-----------+--------------------------+----------+------------+------------+
+| E478	 | David      | Smith	  | ASSOCIATE DATA SCIENTIST |	4000.00 |    4000.00 |	  5000.00 |
+| E532	 | Claire     | Brennan   | ASSOCIATE DATA SCIENTIST |	4300.00 |    4000.00 |	  5000.00 |
+| E403	 | Steve      | Hoffman   | ASSOCIATE DATA SCIENTIST |	5000.00 |    4000.00 |	  5000.00 |
+| E505	 | Chad       | Wilson	  | ASSOCIATE DATA SCIENTIST |	5000.00 |    4000.00 |	  5000.00 |
+| E640	 | Jenifer    | Jhones	  | JUNIOR DATA SCIENTIST    |	2800.00 |    2800.00 |	  3000.00 |
+| E620	 | Katrina    | Allen	  | JUNIOR DATA SCIENTIST    |	3000.00 |    2800.00 |	  3000.00 |
+| E005	 | Eric       | Hoffman   | LEAD DATA SCIENTIST      |	8500.00 |    8500.00 |	  9000.00 |
+| E010	 | William    | Butler	  | LEAD DATA SCIENTIST      |	9000.00 |    8500.00 |	  9000.00 |
+| E612	 | Tracy      | Norris	  | MANAGER		     |	8500.00 |    8500.00 |	 11000.00 |
+| E083	 | Patrick    | Voltz	  | MANAGER		     |	9500.00 |    8500.00 |	 11000.00 |
+| E583	 | Janet      | Hale	  | MANAGER		     | 10000.00 |    8500.00 |	 11000.00 |
+| E103	 | Emily      | Grove	  | MANAGER		     | 10500.00 |    8500.00 |	 11000.00 |
+| E428	 | Pete       | Allen	  | MANAGER		     | 11000.00 |    8500.00 |	 11000.00 |
+| E001	 | Arthur     | Black	  | PRESIDENT		     | 16500.00 |   16500.00 |	 16500.00 |
+| E052	 | Dianna     | Wilson	  | SENIOR DATA SCIENTIST    |	5500.00 |    5500.00 |	  7700.00 |
+| E245	 | Nian       | Zhen	  | SENIOR DATA SCIENTIST    |	6500.00 |    5500.00 |	  7700.00 |
+| E260	 | Roy	      | Collins   | SENIOR DATA SCIENTIST    |	7000.00 |    5500.00 |	  7700.00 |
+| E204	 | Karene     | Nowak	  | SENIOR DATA SCIENTIST    |	7500.00 |    5500.00 |	  7700.00 |
+| E057	 | Dorothy    | Wilson	  | SENIOR DATA SCIENTIST    |	7700.00 |    5500.00 |	  7700.00 |
++--------+------------+-----------+--------------------------+----------+------------+------------+
+19 rows in set (0.03 sec)
+
+mysql> -- 10. Write a query to assign ranks to each employee based on their experience.
+mysql> -- Take data from the employee record table.
+mysql>
+mysql> SELECT EMP_ID, FIRST_NAME, LAST_NAME, EXP,
+    ->	   RANK() OVER( ORDER BY EXP DESC) AS EXP_RANK
+    -> FROM EMP_RECORD_TABLE;
++--------+------------+-----------+-----+----------+
+| EMP_ID | FIRST_NAME | LAST_NAME | EXP | EXP_RANK |
++--------+------------+-----------+-----+----------+
+| E001	 | Arthur     | Black	  |  20 |	 1 |
+| E083	 | Patrick    | Voltz	  |  15 |	 2 |
+| E103	 | Emily      | Grove	  |  14 |	 3 |
+| E428	 | Pete       | Allen	  |  14 |	 3 |
+| E583	 | Janet      | Hale	  |  14 |	 3 |
+| E612	 | Tracy      | Norris	  |  13 |	 6 |
+| E010	 | William    | Butler	  |  12 |	 7 |
+| E005	 | Eric       | Hoffman   |  11 |	 8 |
+| E057	 | Dorothy    | Wilson	  |   9 |	 9 |
+| E204	 | Karene     | Nowak	  |   8 |	10 |
+| E260	 | Roy	      | Collins   |   7 |	11 |
+| E052	 | Dianna     | Wilson	  |   6 |	12 |
+| E245	 | Nian       | Zhen	  |   6 |	12 |
+| E505	 | Chad       | Wilson	  |   5 |	14 |
+| E403	 | Steve      | Hoffman   |   4 |	15 |
+| E478	 | David      | Smith	  |   3 |	16 |
+| E532	 | Claire     | Brennan   |   3 |	16 |
+| E620	 | Katrina    | Allen	  |   2 |	18 |
+| E640	 | Jenifer    | Jhones	  |   1 |	19 |
++--------+------------+-----------+-----+----------+
+19 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 11.  Write a query to create a view that displays
+mysql> -- employees in various countries whose salary is more than six thousand.
+mysql> -- Take data from the employee record table.
+mysql>
+mysql> CREATE OR REPLACE VIEW SAL_OVER_6K_EMP_VW AS
+    ->	   SELECT * FROM EMP_RECORD_TABLE
+    ->	   WHERE SALARY > 6000;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
+mysql> SELECT * FROM SAL_OVER_6K_EMP_VW;
++----+--------+------------+-----------+--------+-----------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+| ID | EMP_ID | FIRST_NAME | LAST_NAME | GENDER | ROLE			| DEPT	     | EXP | COUNTRY  | CONTINENT     | SALARY	 | EMP_RATING | MANAGER_ID | PROJ_ID |
++----+--------+------------+-----------+--------+-----------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+|  1 | E001   | Arthur	   | Black     | M	| PRESIDENT		| ALL	     |	20 | USA      | NORTH AMERICA | 16500.00 |	    5 | NULL	   | NULL    |
+|  2 | E005   | Eric	   | Hoffman   | M	| LEAD DATA SCIENTIST	| FINANCE    |	11 | USA      | NORTH AMERICA |  8500.00 |	    3 | E103	   | P105    |
+|  3 | E010   | William    | Butler    | M	| LEAD DATA SCIENTIST	| AUTOMOTIVE |	12 | FRANCE   | EUROPE	      |  9000.00 |	    2 | E428	   | P204    |
+|  5 | E057   | Dorothy    | Wilson    | F	| SENIOR DATA SCIENTIST | HEALTHCARE |	 9 | USA      | NORTH AMERICA |  7700.00 |	    1 | E083	   | P302    |
+|  6 | E083   | Patrick    | Voltz     | M	| MANAGER		| HEALTHCARE |	15 | USA      | NORTH AMERICA |  9500.00 |	    5 | E001	   | NULL    |
+|  7 | E103   | Emily	   | Grove     | F	| MANAGER		| FINANCE    |	14 | CANADA   | NORTH AMERICA | 10500.00 |	    4 | E001	   | NULL    |
+|  8 | E204   | Karene	   | Nowak     | F	| SENIOR DATA SCIENTIST | AUTOMOTIVE |	 8 | GERMANY  | EUROPE	      |  7500.00 |	    5 | E428	   | P204    |
+|  9 | E245   | Nian	   | Zhen      | M	| SENIOR DATA SCIENTIST | RETAIL     |	 6 | CHINA    | ASIA	      |  6500.00 |	    2 | E583	   | P109    |
+| 10 | E260   | Roy	   | Collins   | M	| SENIOR DATA SCIENTIST | RETAIL     |	 7 | INDIA    | ASIA	      |  7000.00 |	    3 | E583	   | NA      |
+| 12 | E428   | Pete	   | Allen     | M	| MANAGER		| AUTOMOTIVE |	14 | GERMANY  | EUROPE	      | 11000.00 |	    4 | E001	   | NULL    |
+| 16 | E583   | Janet	   | Hale      | F	| MANAGER		| RETAIL     |	14 | COLOMBIA | SOUTH AMERICA | 10000.00 |	    2 | E001	   | NULL    |
+| 17 | E612   | Tracy	   | Norris    | F	| MANAGER		| RETAIL     |	13 | INDIA    | ASIA	      |  8500.00 |	    4 | E001	   | NULL    |
++----+--------+------------+-----------+--------+-----------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+12 rows in set (0.01 sec)
+
+mysql> -- 12. Write a nested query to find employees with experience of more than ten years.
+mysql> -- Take data from the employee record table.
+mysql>
+mysql> SELECT * FROM EMP_RECORD_TABLE WHERE EMP_ID NOT IN ( SELECT EMP_ID FROM EMP_RECORD_TABLE WHERE EXP <=10);
++----+--------+------------+-----------+--------+---------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+| ID | EMP_ID | FIRST_NAME | LAST_NAME | GENDER | ROLE		      | DEPT	   | EXP | COUNTRY  | CONTINENT     | SALARY   | EMP_RATING | MANAGER_ID | PROJ_ID |
++----+--------+------------+-----------+--------+---------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+|  1 | E001   | Arthur	   | Black     | M	| PRESIDENT	      | ALL	   |  20 | USA	    | NORTH AMERICA | 16500.00 |	  5 | NULL	 | NULL    |
+|  2 | E005   | Eric	   | Hoffman   | M	| LEAD DATA SCIENTIST | FINANCE    |  11 | USA	    | NORTH AMERICA |  8500.00 |	  3 | E103	 | P105    |
+|  3 | E010   | William    | Butler    | M	| LEAD DATA SCIENTIST | AUTOMOTIVE |  12 | FRANCE   | EUROPE	    |  9000.00 |	  2 | E428	 | P204    |
+|  6 | E083   | Patrick    | Voltz     | M	| MANAGER	      | HEALTHCARE |  15 | USA	    | NORTH AMERICA |  9500.00 |	  5 | E001	 | NULL    |
+|  7 | E103   | Emily	   | Grove     | F	| MANAGER	      | FINANCE    |  14 | CANADA   | NORTH AMERICA | 10500.00 |	  4 | E001	 | NULL    |
+| 12 | E428   | Pete	   | Allen     | M	| MANAGER	      | AUTOMOTIVE |  14 | GERMANY  | EUROPE	    | 11000.00 |	  4 | E001	 | NULL    |
+| 16 | E583   | Janet	   | Hale      | F	| MANAGER	      | RETAIL	   |  14 | COLOMBIA | SOUTH AMERICA | 10000.00 |	  2 | E001	 | NULL    |
+| 17 | E612   | Tracy	   | Norris    | F	| MANAGER	      | RETAIL	   |  13 | INDIA    | ASIA	    |  8500.00 |	  4 | E001	 | NULL    |
++----+--------+------------+-----------+--------+---------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> -- 13. Write a query to create a stored procedure to retrieve the details of the employees whose experience is more than three years.
+mysql> -- Take data from the employee record table.
+mysql> call getEmpExpOver3();
++----+--------+------------+-----------+--------+--------------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+| ID | EMP_ID | FIRST_NAME | LAST_NAME | GENDER | ROLE			   | DEPT	| EXP | COUNTRY  | CONTINENT	 | SALARY   | EMP_RATING | MANAGER_ID | PROJ_ID |
++----+--------+------------+-----------+--------+--------------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+|  1 | E001   | Arthur	   | Black     | M	| PRESIDENT		   | ALL	|  20 | USA	 | NORTH AMERICA | 16500.00 |	       5 | NULL       | NULL	|
+|  2 | E005   | Eric	   | Hoffman   | M	| LEAD DATA SCIENTIST	   | FINANCE	|  11 | USA	 | NORTH AMERICA |  8500.00 |	       3 | E103       | P105	|
+|  3 | E010   | William    | Butler    | M	| LEAD DATA SCIENTIST	   | AUTOMOTIVE |  12 | FRANCE	 | EUROPE	 |  9000.00 |	       2 | E428       | P204	|
+|  4 | E052   | Dianna	   | Wilson    | F	| SENIOR DATA SCIENTIST    | HEALTHCARE |   6 | CANADA	 | NORTH AMERICA |  5500.00 |	       5 | E083       | P103	|
+|  5 | E057   | Dorothy    | Wilson    | F	| SENIOR DATA SCIENTIST    | HEALTHCARE |   9 | USA	 | NORTH AMERICA |  7700.00 |	       1 | E083       | P302	|
+|  6 | E083   | Patrick    | Voltz     | M	| MANAGER		   | HEALTHCARE |  15 | USA	 | NORTH AMERICA |  9500.00 |	       5 | E001       | NULL	|
+|  7 | E103   | Emily	   | Grove     | F	| MANAGER		   | FINANCE	|  14 | CANADA	 | NORTH AMERICA | 10500.00 |	       4 | E001       | NULL	|
+|  8 | E204   | Karene	   | Nowak     | F	| SENIOR DATA SCIENTIST    | AUTOMOTIVE |   8 | GERMANY  | EUROPE	 |  7500.00 |	       5 | E428       | P204	|
+|  9 | E245   | Nian	   | Zhen      | M	| SENIOR DATA SCIENTIST    | RETAIL	|   6 | CHINA	 | ASIA 	 |  6500.00 |	       2 | E583       | P109	|
+| 10 | E260   | Roy	   | Collins   | M	| SENIOR DATA SCIENTIST    | RETAIL	|   7 | INDIA	 | ASIA 	 |  7000.00 |	       3 | E583       | NA	|
+| 11 | E403   | Steve	   | Hoffman   | M	| ASSOCIATE DATA SCIENTIST | FINANCE	|   4 | USA	 | NORTH AMERICA |  5000.00 |	       3 | E103       | P105	|
+| 12 | E428   | Pete	   | Allen     | M	| MANAGER		   | AUTOMOTIVE |  14 | GERMANY  | EUROPE	 | 11000.00 |	       4 | E001       | NULL	|
+| 14 | E505   | Chad	   | Wilson    | M	| ASSOCIATE DATA SCIENTIST | HEALTHCARE |   5 | CANADA	 | NORTH AMERICA |  5000.00 |	       2 | E083       | P103	|
+| 16 | E583   | Janet	   | Hale      | F	| MANAGER		   | RETAIL	|  14 | COLOMBIA | SOUTH AMERICA | 10000.00 |	       2 | E001       | NULL	|
+| 17 | E612   | Tracy	   | Norris    | F	| MANAGER		   | RETAIL	|  13 | INDIA	 | ASIA 	 |  8500.00 |	       4 | E001       | NULL	|
++----+--------+------------+-----------+--------+--------------------------+------------+-----+----------+---------------+----------+------------+------------+---------+
+15 rows in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> -- 14. Write a query using stored functions in the project table to check whether the job profile assigned to each employee in the data science team matches the organizations set standard.
+mysql>
+8GK-->THIS SHOWS OTHE THAN CEO, EVERYONE IS WITHIN ROLE EXP RANGE.
+mysql> SELECT EMP_ID, RoleExpCheck(EMP_ID) FROM EMP_RECORD_TABLE;
++--------+----------------------+
+| EMP_ID | RoleExpCheck(EMP_ID) |
++--------+----------------------+
+| E001	 |		     -1 |
+| E005	 |		      1 |
+| E010	 |		      1 |
+| E052	 |		      1 |
+| E057	 |		      1 |
+| E083	 |		      1 |
+| E103	 |		      1 |
+| E204	 |		      1 |
+| E245	 |		      1 |
+| E260	 |		      1 |
+| E403	 |		      1 |
+| E428	 |		      1 |
+| E478	 |		      1 |
+| E505	 |		      1 |
+| E532	 |		      1 |
+| E583	 |		      1 |
+| E612	 |		      1 |
+| E620	 |		      1 |
+| E640	 |		      1 |
++--------+----------------------+
+19 rows in set (0.01 sec)
+
+34GKlONDEMP_RECORD_TABLE;AME_INDXO
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> -- 15. Create an index to improve the cost and performance of the query to find the employee
+mysql> --  whose FIRST_NAME is ¡®Eric¡¯ in the employee table after checking the execution plan.
+mysql> EXPLAIN SELECT * FROM EMP_RECORD_TABLE WHERE FIRST_NAME='ERIC';
++----+-------------+------------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table	      | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra	  |
++----+-------------+------------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE	   | EMP_RECORD_TABLE | NULL	   | ALL  | NULL	  | NULL | NULL    | NULL |   19 |    10.00 | Using where |
++----+-------------+------------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> CREATE INDEX FIRST_NAME_INDX ON EMP_RECORD_TABLE(FIRST_NAME);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> EXPLAIN SELECT * FROM EMP_RECORD_TABLE WHERE FIRST_NAME='ERIC';
++----+-------------+------------------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+| id | select_type | table	      | partitions | type | possible_keys   | key	      | key_len | ref	| rows | filtered | Extra |
++----+-------------+------------------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+|  1 | SIMPLE	   | EMP_RECORD_TABLE | NULL	   | ref  | FIRST_NAME_INDX | FIRST_NAME_INDX | 122	| const |    1 |   100.00 | NULL  |
++----+-------------+------------------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.01 sec)
+
+mysql> -- 16. Write a query to calculate the bonus for all the employees, based on their ratings and salaries
+mysql> -- (Use the formula: 5% of salary * employee rating).
+mysql>
+mysql> SELECT EMP_ID, SALARY, EMP_RATING, (0.05 * SALARY * EMP_RATING) AS BONUS FROM EMP_RECORD_TABLE;
++--------+----------+------------+-----------+
+| EMP_ID | SALARY   | EMP_RATING | BONUS     |
++--------+----------+------------+-----------+
+| E001	 | 16500.00 |	       5 | 4125.0000 |
+| E005	 |  8500.00 |	       3 | 1275.0000 |
+| E010	 |  9000.00 |	       2 |  900.0000 |
+| E052	 |  5500.00 |	       5 | 1375.0000 |
+| E057	 |  7700.00 |	       1 |  385.0000 |
+| E083	 |  9500.00 |	       5 | 2375.0000 |
+| E103	 | 10500.00 |	       4 | 2100.0000 |
+| E204	 |  7500.00 |	       5 | 1875.0000 |
+| E245	 |  6500.00 |	       2 |  650.0000 |
+| E260	 |  7000.00 |	       3 | 1050.0000 |
+| E403	 |  5000.00 |	       3 |  750.0000 |
+| E428	 | 11000.00 |	       4 | 2200.0000 |
+| E478	 |  4000.00 |	       4 |  800.0000 |
+| E505	 |  5000.00 |	       2 |  500.0000 |
+| E532	 |  4300.00 |	       1 |  215.0000 |
+| E583	 | 10000.00 |	       2 | 1000.0000 |
+| E612	 |  8500.00 |	       4 | 1700.0000 |
+| E620	 |  3000.00 |	       1 |  150.0000 |
+| E640	 |  2800.00 |	       4 |  560.0000 |
++--------+----------+------------+-----------+
+19 rows in set (0.01 sec)
+
+mysql> -- 17. Write a query to calculate the average salary distribution based on the continent and country.
+mysql> -- Take data from the employee record table.
+mysql>
+mysql> SELECT Continent, Country, TRUNCATE(AVG(Salary),2) AS Avg_Salary FROM EMP_RECORD_TABLE GROUP BY Continent, Country;
++---------------+----------+------------+
+| Continent	| Country  | Avg_Salary |
++---------------+----------+------------+
+| NORTH AMERICA | USA	   |	9440.00 |
+| EUROPE	| FRANCE   |	9000.00 |
+| NORTH AMERICA | CANADA   |	7000.00 |
+| EUROPE	| GERMANY  |	7600.00 |
+| ASIA		| CHINA    |	6500.00 |
+| ASIA		| INDIA    |	6166.66 |
+| SOUTH AMERICA | COLOMBIA |	5600.00 |
++---------------+----------+------------+
+7 rows in set (0.01 sec)
+
+mysql> EXIT
+Bye
+0m27m24mJ(base)kivyshih@MacBook-Airy~h%hK?2004h?2004l
+
+Saving session...
+...saving history...truncating history files...
+...completed.
+Deleting expired sessions...	   7 completed.
+
+Script done on Mon Jan 20 23:08:19 2025
